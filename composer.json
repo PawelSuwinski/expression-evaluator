@@ -11,12 +11,15 @@
     ],
     "require": {
         "php": "^7.0",
-        "symfony/http-kernel": "~2.8",
-        "symfony/http-foundation": "~2.8",
         "symfony/event-dispatcher": "~2.8",
         "symfony/expression-language": "~2.8"
     },
+    "suggest": {
+        "symfony/http-kernel": "Required for using ConvertResponseListener, ~2.8"
+    }, 
     "require-dev": {
+        "symfony/http-kernel": "~2.8",
+        "symfony/http-foundation": "~2.8",
         "phpunit/phpunit": "^6.5"
     },
     "autoload": {
