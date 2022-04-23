@@ -1,48 +1,41 @@
 <?php
 
 /**
- * This file is part of the PsuwCommonListener package.
+ * This file is part of the PsuwExpressionEvaluator package.
  *
  * @copyright Copyright (c) 2016 Paweł Suwiński
- * @author Paweł Suwiński <psuw@wp.pl>
  * @license MIT
  */
 
-namespace Psuw\CommonListener\Expression;
+namespace Psuw\ExpressionEvaluator\Expression;
 
 use Symfony\Component\ExpressionLanguage\Expression;
 
 /**
- * ExpressionEvaluatingTrait 
- * 
- * @package PsuwCommonListener
+ * ExpressionEvaluatingTrait.
+ *
  * @copyright Copyright (c) 2016, Paweł Suwiński
- * @author Paweł Suwiński <psuw@wp.pl> 
  * @license MIT
  */
 trait ExpressionEvaluatingTrait
 {
-    protected $expressions = array();
+    protected $expressions = [];
 
     /**
-     * setExpressions 
-     * 
-     * @param array $expressions 
-     * @return void
+     * setExpressions.
      */
     public function setExpressions(array $expressions)
     {
-        $this->expressions = array();
-        foreach($expressions as $expression) {
+        $this->expressions = [];
+        foreach ($expressions as $expression) {
             $this->addExpression($expression);
         }
     }
 
     /**
-     * addExpression 
-     * 
-     * @param string|Expression $expression 
-     * @return void
+     * addExpression.
+     *
+     * @param string|Expression $expression
      */
     public function addExpression($expression)
     {
@@ -51,26 +44,21 @@ trait ExpressionEvaluatingTrait
     }
 
     /**
-    * evaluateExpressions 
-    * 
-    * @param array $context 
-    * @return array
-    */
+     * evaluateExpressions.
+     *
+     * @return array
+     */
     protected function evaluateExpressions(array $context)
     {
-        if(!$this instanceof ExpressionLanguageAwareInterface) {
-            throw new \InvalidArgumentException(
-                'ExpressionLanguageAwareInterface implementation required!'
-            );
+        if (!$this instanceof ExpressionLanguageAwareInterface) {
+            throw new \InvalidArgumentException('ExpressionLanguageAwareInterface implementation required!');
         }
-        $results = array();
-        foreach($this->expressions as $expression) {
+        $results = [];
+        foreach ($this->expressions as $expression) {
             $context['result'] = empty($results) ? null : end($results);
-            $results[] = $this->getExpressionLanguage()->evaluate(
-                $expression, 
-                $context
-            );
+            $results[] = $this->getExpressionLanguage()->evaluate($expression, $context);
         }
+
         return $results;
-   }
+    }
 }

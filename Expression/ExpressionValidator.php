@@ -1,54 +1,49 @@
 <?php
 
 /**
- * This file is part of the PsuwCommonListener package.
+ * This file is part of the PsuwExpressionEvaluator package.
  *
- * @copyright Copyright (c) 2016 Pawe≥ SuwiÒski
- * @author Pawe≥ SuwiÒski <psuw@wp.pl>
+ * @copyright Copyright (c) 2016 Pawe≈Ç Suwi≈Ñski
  * @license MIT
  */
 
-namespace Psuw\CommonListener\Expression;
+namespace Psuw\ExpressionEvaluator\Expression;
 
 use Symfony\Component\ExpressionLanguage\Expression;
 
-
 /**
- * ExpressionValidator 
- * 
- * @package PsuwCommonListener
- * @copyright Copyright (c) 2016, Pawe≥ SuwiÒski
- * @author Pawe≥ SuwiÒski <psuw@wp.pl> 
+ * ExpressionValidator.
+ *
+ * @copyright Copyright (c) 2016, Pawe≈Ç Suwi≈Ñski
  * @license MIT
  */
 class ExpressionValidator
 {
     /**
-     * validate 
-     * 
+     * validate.
+     *
      * @throw \InvalidArgumentException on invalid format
-     * @param mixed $expression 
-     * @return void
+     *
+     * @param mixed $expression
      */
-    static public function validate($expression) 
+    public static function validate($expression)
     {
-        if(!self::isValid($expression)) { 
+        if (!self::isValid($expression)) {
             throw new \InvalidArgumentException(
-                'string or "Symfony\Component\ExpressionLanguage\Expression" '.
-                    'instance expected as expression!'
+                'string or "Symfony\Component\ExpressionLanguage\Expression" '.'instance expected as expression!'
             );
         }
     }
 
     /**
-     * isValid 
-     * 
-     * @param mixed $expression 
+     * isValid.
+     *
+     * @param mixed $expression
+     *
      * @return bool
      */
-    static public function isValid($expression)
+    public static function isValid($expression)
     {
         return is_string($expression) || $expression instanceof Expression;
     }
 }
-

@@ -1,34 +1,28 @@
 <?php
 
 /**
- * This file is part of the PsuwCommonListener package.
+ * This file is part of the PsuwExpressionEvaluator package.
  *
  * @copyright Copyright (c) 2016 Paweł Suwiński
- * @author Paweł Suwiński <psuw@wp.pl>
  * @license MIT
  */
 
-namespace Psuw\CommonListener\Tests\Expression;
+namespace Psuw\ExpressionEvaluator\Tests\Expression;
 
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 
-
 /**
- * ExpressionLanguageAwareTraitTest 
- * 
- * @package PsuwCommonListener
+ * ExpressionLanguageAwareTraitTest.
+ *
  * @copyright Copyright (c) 2016, Paweł Suwiński
- * @author Paweł Suwiński <psuw@wp.pl> 
  * @license MIT
  */
 class ExpressionLanguageAwareTraitTest extends \PHPUnit\Framework\TestCase
 {
-    use \Psuw\CommonListener\Expression\ExpressionLanguageAwareTrait;
+    use \Psuw\ExpressionEvaluator\Expression\ExpressionLanguageAwareTrait;
 
     /**
-     * testGetExpressionLanguageIfNotSet 
-     * 
-     * @return void
+     * testGetExpressionLanguageIfNotSet.
      */
     public function testGetExpressionLanguageIfNotSet()
     {
@@ -40,9 +34,7 @@ class ExpressionLanguageAwareTraitTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * testGetExpressionLanguageIfSet 
-     * 
-     * @return void
+     * testGetExpressionLanguageIfSet.
      */
     public function testGetExpressionLanguageIfSet()
     {

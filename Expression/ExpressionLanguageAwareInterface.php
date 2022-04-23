@@ -1,39 +1,33 @@
 <?php
 
 /**
- * This file is part of the PsuwCommonListener package.
+ * This file is part of the PsuwExpressionEvaluator package.
  *
  * @copyright Copyright (c) 2016 Paweł Suwiński
- * @author Paweł Suwiński <psuw@wp.pl>
  * @license MIT
  */
 
-namespace Psuw\CommonListener\Expression;
+namespace Psuw\ExpressionEvaluator\Expression;
 
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 
 /**
- * ExpressionLanguageAwareInterface 
- * 
- * @package PsuwCommonListener
+ * ExpressionLanguageAwareInterface.
+ *
  * @copyright Copyright (c) 2016, Paweł Suwiński
- * @author Paweł Suwiński <psuw@wp.pl> 
  * @license MIT
  */
 interface ExpressionLanguageAwareInterface
 {
     /**
-     * setExpressionLanguage 
-     * 
-     * @param ExpressionLanguage $expressionLanguage 
-     * @return void
+     * setExpressionLanguage.
      */
     public function setExpressionLanguage(ExpressionLanguage $expressionLanguage);
 
     /**
-     * getExpressionLanguage 
-     * 
-     * @return ExpressionLanguage 
+     * getExpressionLanguage.
+     *
+     * @return ExpressionLanguage
      */
     public function getExpressionLanguage();
 }

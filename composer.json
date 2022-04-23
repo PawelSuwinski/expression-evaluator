@@ -1,6 +1,6 @@
 {
-    "name": "psuw/common-listener",
-    "description": "Expression evaluating common listeners",
+    "name": "psuw/expression-evaluator",
+    "description": "Expression Language expression evaluator",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -10,20 +10,14 @@
         }
     ],
     "require": {
-        "php": "^7.0",
-        "symfony/event-dispatcher": "~2.8",
-        "symfony/expression-language": "~2.8"
+        "php": ">7.0",
+        "symfony/expression-language": "~5.4"
     },
-    "suggest": {
-        "symfony/http-kernel": "Required for using ConvertResponseListener, ~2.8"
-    }, 
     "require-dev": {
-        "symfony/http-kernel": "~2.8",
-        "symfony/http-foundation": "~2.8",
         "phpunit/phpunit": "^6.5"
     },
     "autoload": {
-        "psr-4": { "Psuw\\CommonListener\\": "" }
+        "psr-4": { "Psuw\\ExpressionEvaluator\\": "" }
     },
     "extra": {
         "branch-alias": {

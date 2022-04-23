@@ -1,50 +1,46 @@
 <?php
 
 /**
- * This file is part of the PsuwCommonListener package.
+ * This file is part of the PsuwExpressionEvaluator package.
  *
  * @copyright Copyright (c) 2016 Paweł Suwiński
- * @author Paweł Suwiński <psuw@wp.pl>
  * @license MIT
  */
 
-namespace Psuw\CommonListener\Tests\Expression;
+namespace Psuw\ExpressionEvaluator\Tests\Expression;
 
+use Psuw\ExpressionEvaluator\Expression\ExpressionValidator;
 use Symfony\Component\ExpressionLanguage\Expression;
-use Psuw\CommonListener\Expression\ExpressionValidator;
-
 
 /**
- * ExpressionValidatorTest 
- * 
- * @package PsuwCommonListener
+ * ExpressionValidatorTest.
+ *
  * @copyright Copyright (c) 2016, Paweł Suwiński
- * @author Paweł Suwiński <psuw@wp.pl> 
  * @license MIT
  */
 class ExpressionValidatorTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * getInvalidExpressions 
-     * 
+     * getInvalidExpressions.
+     *
      * @return array
      */
-    static public function getInvalidExpressions()
+    public static function getInvalidExpressions()
     {
-        return array(
-                [true],
-                [false],
-                [new \ArrayObject()],
-                [10],
-            );
+        return [
+            [true],
+            [false],
+            [new \ArrayObject()],
+            [10],
+        ];
     }
 
     /**
-     * testValidExpression 
-     * 
+     * testValidExpression.
+     *
      * @dataProvider providerValidExpression
-     * @param mixed $expression 
-     * @return void
+     *
+     * @param mixed $expression
      */
     public function testValidExpression($expression)
     {
@@ -52,24 +48,24 @@ class ExpressionValidatorTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * providerValidExpression 
-     * 
+     * providerValidExpression.
+     *
      * @return array
      */
     public function providerValidExpression()
     {
-        return array(
+        return [
             ['event.getSubject()'],
             [new Expression('event.getSubject()')],
-        );
+        ];
     }
 
     /**
-     * testInvalidExpression 
-     * 
+     * testInvalidExpression.
+     *
      * @dataProvider providerInvalidExpression
-     * @param mixed $expression 
-     * @return void
+     *
+     * @param mixed $expression
      */
     public function testInvalidExpression($expression)
     {
@@ -77,8 +73,8 @@ class ExpressionValidatorTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * providerInvalidExpression 
-     * 
+     * providerInvalidExpression.
+     *
      * @return array
      */
     public function providerInvalidExpression()
@@ -87,13 +83,13 @@ class ExpressionValidatorTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * testValidationException 
-     * 
+     * testValidationException.
+     *
      * @dataProvider providerInvalidExpression
      * @expectedException \InvalidArgumentException
      * @expectedExceptionMessageRegExp #string or.*Expression.*expected#
-     * @param mixed $expression 
-     * @return void
+     *
+     * @param mixed $expression
      */
     public function testValidationException($expression)
     {
