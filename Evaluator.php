@@ -7,7 +7,7 @@
  * @license MIT
  */
 
-namespace Psuw\ExpressionEvaluator\HttpKernel\EventListener;
+namespace Psuw\ExpressionEvaluator;
 
 /**
  * Evaluator.
@@ -17,8 +17,9 @@ namespace Psuw\ExpressionEvaluator\HttpKernel\EventListener;
  * @copyright Copyright (c) 2016, Paweł Suwiński
  * @license MIT
  */
-class Evaluator
+class Evaluator implements ExpressionLanguageAwareInterface
 {
+    use \Psuw\ExpressionEvaluator\Expression\ExpressionLanguageAwareTrait;
     use \Psuw\ExpressionEvaluator\Expression\ExpressionEvaluatingTrait
     {
         setExpressions as protected;
