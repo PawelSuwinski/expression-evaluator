@@ -22,7 +22,7 @@ services:
     secure_headers_response:
         class: Psuw\ExpressionEvaluator\Evaluator
         arguments: 
-            - 'arg1.getResponse().headers.add(headers)'
+            - 'arg0.getResponse().headers.add(headers)'
             - 
                 headers:
                   X-Frame-Options: SAMEORIGIN
