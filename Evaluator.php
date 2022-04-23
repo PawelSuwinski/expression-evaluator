@@ -9,6 +9,8 @@
 
 namespace Psuw\ExpressionEvaluator;
 
+use Psuw\ExpressionEvaluator\Expression\ExpressionLanguageAwareInterface;
+
 /**
  * Evaluator.
  *
