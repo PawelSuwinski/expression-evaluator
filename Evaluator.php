@@ -22,11 +22,7 @@ use Psuw\ExpressionEvaluator\Expression\ExpressionLanguageAwareInterface;
 class Evaluator implements ExpressionLanguageAwareInterface
 {
     use \Psuw\ExpressionEvaluator\Expression\ExpressionLanguageAwareTrait;
-    use \Psuw\ExpressionEvaluator\Expression\ExpressionEvaluatingTrait
-    {
-        setExpressions as protected;
-        addExpression as protected;
-    }
+    use \Psuw\ExpressionEvaluator\Expression\ExpressionEvaluatingTrait;
 
     protected $context;
 
