@@ -39,7 +39,8 @@ class Evaluator implements ExpressionLanguageAwareInterface
         foreach (func_get_args() as $id => $arg) {
             $this->context['arg'.$id] = $arg;
         }
+        $results = $this->evaluateExpressions($this->context);
 
-        return end($this->evaluateExpressions($this->context));
+        return end($results);
     }
 }
