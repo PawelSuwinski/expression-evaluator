@@ -26,9 +26,10 @@ class Evaluator implements ExpressionLanguageAwareInterface
 
     protected $context;
 
-    public function __construct($expression, array $context = [])
+    public function __construct($expression, array $context = [], bool $catchExceptions = false)
     {
         $this->context = $context;
+        $this->catchExceptions = $catchExceptions;
         is_array($expression)
             ? $this->setExpressions($expression)
             : $this->addExpression($expression);

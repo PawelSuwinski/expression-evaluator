@@ -19,6 +19,8 @@ use Symfony\Component\ExpressionLanguage\Expression;
  */
 trait ExpressionEvaluatingTrait
 {
+    protected $catchExceptions = false;
+
     protected $expressions = [];
 
     /**
@@ -54,9 +56,30 @@ trait ExpressionEvaluatingTrait
             throw new \InvalidArgumentException('ExpressionLanguageAwareInterface implementation required!');
         }
         $results = [];
+        $context['exception'] = null;
+        if ($this->catchExceptions) {
+            set_error_handler(function ($severity, $message, $file, $line) {
+                if (!(error_reporting() & $severity)) {
+                    return;
+                }
+                throw new \ErrorException($message, 0, $severity, $file, $line);
+            });
+        }
         foreach ($this->expressions as $expression) {
             $context['result'] = empty($results) ? null : end($results);
-            $results[] = $this->getExpressionLanguage()->evaluate($expression, $context);
+            try {
+                $results[] = $this->getExpressionLanguage()->evaluate($expression, $context);
+                $context['exception'] = null;
+            } catch (\Exception $e) {
+                if (!$this->catchExceptions) {
+                    throw $e;
+                }
+                $results[] = null;
+                $context['exception'] = $e;
+            }
+        }
+        if ($this->catchExceptions) {
+            restore_error_handler();
         }
 
         return $results;
