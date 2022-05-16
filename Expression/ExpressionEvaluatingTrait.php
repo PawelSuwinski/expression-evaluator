@@ -21,6 +21,8 @@ trait ExpressionEvaluatingTrait
 {
     protected $catchExceptions = false;
 
+    protected $errorToException = false;
+
     protected $expressions = [];
 
     /**
@@ -57,7 +59,7 @@ trait ExpressionEvaluatingTrait
         }
         $results = [];
         $context['exception'] = null;
-        if ($this->catchExceptions) {
+        if ($this->errorToException) {
             set_error_handler(function ($severity, $message, $file, $line) {
                 if (!(error_reporting() & $severity)) {
                     return;
@@ -78,7 +80,7 @@ trait ExpressionEvaluatingTrait
                 $context['exception'] = $e;
             }
         }
-        if ($this->catchExceptions) {
+        if ($this->errorToException) {
             restore_error_handler();
         }
 
