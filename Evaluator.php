@@ -59,6 +59,9 @@ class Evaluator implements ExpressionLanguageAwareInterface
 
     public function __call(string $name, array $arguments)
     {
+        $this->context['method'] = $name;
+        $this->context['arguments'] = $arguments;
+
         return $this(...$arguments);
     }
 
