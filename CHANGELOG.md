@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.3.0] - 2022-06-27
+
+### Added
+
+- invoked with named method adds method name and arguments array
+  to execution context, which allows use evaluator as common proxy
+
 ## [1.2.0] - 2022-05-21
 
 ### Changed
@@ -9,7 +16,7 @@
 
 ### Added
 
-- optional mapping names of invoke arguments context variables inplace
+- optional mapping names of invoke arguments context variables in place
   of default `arg0`, `arg1`, etc.
 - catch any method call as evaluator invoke method
 
