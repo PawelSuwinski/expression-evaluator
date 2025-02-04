@@ -86,13 +86,14 @@ class ExpressionValidatorTest extends \PHPUnit\Framework\TestCase
      * testValidationException.
      *
      * @dataProvider providerInvalidExpression
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessageRegExp #string or.*Expression.*expected#
      *
      * @param mixed $expression
      */
     public function testValidationException($expression)
     {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessageMatches('#string or.*Expression.*expected#');
+
         $this->assertFalse(ExpressionValidator::validate($expression));
     }
 }

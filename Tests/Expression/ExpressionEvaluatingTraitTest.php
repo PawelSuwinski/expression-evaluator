@@ -27,13 +27,13 @@ class ExpressionEvaluatingTraitTest extends \PHPUnit\Framework\TestCase implemen
      * testAddingExpressionValidationException.
      *
      * @dataProvider providerInvalidExpression
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessageRegExp #string or.*Expression.*expected#
      *
      * @param mixed $expression
      */
     public function testAddingExpressionValidationException($expression)
     {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessageMatches('#string or.*Expression.*expected#');
         $this->addExpression($expression);
     }
 
@@ -51,13 +51,13 @@ class ExpressionEvaluatingTraitTest extends \PHPUnit\Framework\TestCase implemen
      * testSettingExpressionsValidationException.
      *
      * @dataProvider providerSettingExpressionsValidationException
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessageRegExp #string or.*Expression.*expected#
      *
      * @param array $expressions
      */
     public function testSettingExpressionsValidationException($expressions)
     {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessageMatches('#string or.*Expression.*expected#');
         $this->setExpressions($expressions);
     }
 
@@ -101,12 +101,12 @@ class ExpressionEvaluatingTraitTest extends \PHPUnit\Framework\TestCase implemen
 
     /**
      * testEvaluatingExpressionInterfaceException.
-     *
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessageRegExp #ExpressionLanguageAwareInterface#
      */
     public function testEvaluatingExpressionInterfaceException()
     {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessageMatches('#ExpressionLanguageAwareInterface#');
+
         $mock = $this->getMockForTrait(
             'Psuw\ExpressionEvaluator\Expression\ExpressionEvaluatingTrait',
             [],
